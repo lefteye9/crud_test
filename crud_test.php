@@ -1,3 +1,10 @@
+<?php
+
+require('function.php');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,35 +14,40 @@
 </head>
 <body>
 
-<?php:
+<?php
 
 $input_a = $_POST['input_a'];
+
+debug('POST情報input_a：'.print_r($_POST['input_a'],true));
+
 $input_b = $_POST['input_b'];
 
-switch ( $_POST['$i'] ):
-    case create:
-        $input_a = "create";
-        var_dump($input_a);
-        break;
+// switch ( $_POST['$i'] ):
+//     case create:
+//         $input_a = "create";
+//         var_dump($input_a);
+//         break;
     
-    case reform:
-        $input_a = "reform";
-        break;
-    case delete:
-        $input_a = "delete";
-        break;
+//     case reform:
+//         $input_a = "reform";
+//         break;
+//     case delete:
+//         $input_a = "delete";
+//         break;
 
-    endswitch;
+//     endswitch;
 
-if($_POST['$i']){
+// if($_POST['$i']){
     
-};
+// };
 
 
 
-// if($_POST['create']){
-//     $input_a ="create";
-// }
+if($_POST['create']){
+    debug('POST情報：'.print_r($_POST,true));
+    return createData();
+    
+}
 
 // if($_POST['reform']){
 //     $input_a ="reform";
@@ -57,7 +69,6 @@ if($_POST['$i']){
 
 <?php echo $input_a; ?>
 <?php echo $input_b; ?>
-<?php echo $i; ?>
 
     
 </body>
