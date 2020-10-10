@@ -99,7 +99,11 @@ function queryPost($dbh, $sql, $data){
 function createData(){
   try{
 
-    debug('input_aの中身：'.print_r($input_a, true));
+    $input_a = $_POST['input_a'];
+
+debug('POST情報input_a：'.print_r($_POST['input_a'],true));
+
+$input_b = $_POST['input_b'];
     $dbh = dbConnect();
     $sql = 'INSERT INTO crud_item (input_a,input_b,create_date) VALUES (:input_a, :input_b, :create_date)';
     $data = array(':input_a' => $input_a,  'input_b' => $input_b, 'create_date' => Date("Y:m:d H:i:s"));
@@ -118,6 +122,28 @@ function createData(){
   }
 }
 
+
+function readData(){
+  try{
+
+  $dbh = dbConnect();
+  $sql = 'SELECT * FROM crud_item WHERE id = :id';
+  $data = array(':id' => 3);
+
+  $stmt = queryPost($dbh, $sql, $data);
+
+  debug('$stmt:'.print_r($stmt, true));
+
+    if($stmt){
+     return $rst = $stmt->fetch(PDO::FETCH_ASSOC);
+     debug('$rst:'.print_r($rst, true));
+    }else{
+     return false;
+    }
+   }catch(Exception $e){
+     error_log('エラー発生：'.$e->getMessage());
+   }
+}
 
 
 

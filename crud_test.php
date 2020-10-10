@@ -45,13 +45,13 @@ $input_b = $_POST['input_b'];
 
 if($_POST['create']){
     debug('POST情報：'.print_r($_POST,true));
-    return createData();
-    
+    return createData();   
 }
 
-// if($_POST['reform']){
-//     $input_a ="reform";
-// }
+if($_POST['reform']){
+    debug('POST情報：'.print_r($_POST,true));
+    return readData();    
+}
 
 // if($_POST['delete']){
 //     $input_a ="delete";
