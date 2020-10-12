@@ -17,13 +17,6 @@ require('function.php');
 
 <?php
 
-$_SESSION['test'] = 'セッションに入れてみた';
-
-$_GET['test'] = 'ゲットパラメータ付与';
-
-// $_GET['item'] = 2;
-
-
 $input_a = $_POST['input_a'];
 
 debug('POST情報input_a：'.print_r($_POST['input_a'],true));
@@ -101,7 +94,7 @@ if($_POST['reform']){
 
 <div class="modal_cover">モーダルカバー</div>
 
-<a href="crud_test_get.php">セッションを理解する為に次のページに行く。</a>
+<a href="crud_test_get.php">ここは２ページ目だよ。</a>
 
 
 <?php echo $input_a; ?>
@@ -116,9 +109,6 @@ if($_POST['reform']){
 <?php echo $_SESSION['test']; ?>
 
 <?php echo $_GET['test']; ?>
-
-<?php echo $_GET['item']; ?>
-
 
 
     
