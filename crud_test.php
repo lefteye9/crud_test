@@ -83,15 +83,27 @@ if($_POST['reform']){
 
 <button class="modal">モーダル</button>
 
-<div class="modal_window">モーダルウィンドウ
+<div class="modal_window">
+    <!-- モーダルウィンドウ -->
+
+<i class="fas fa-angle-left slider__nav slide__prev js-slide-prev"></i>
+<i class="fas fa-angle-right slider__nav slide__next js-slide-next"></i>
+
+<div class="slider__container">
+<div class="slider__item modal_slider_item1">ITEM1</div>
+<div class="slider__item modal_slider_item2">ITEM2</div>
+<div class="slider__item modal_slider_item3">ITEM3</div>
+<div class="slider__item modal_slider_item4">ITEM4</div>
+<div class="slider__item modal_slider_item5">ITEM5</div>
+</div>
+
+<!-- <input type="text" name="" id="">
 
 <input type="text" name="" id="">
 
 <input type="text" name="" id="">
 
-<input type="text" name="" id="">
-
-<input type="submit" value="送信">
+<input type="submit" value="送信"> -->
 
 
 
@@ -126,7 +138,7 @@ if($_POST['reform']){
 
 <footer>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
+<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
 <script>
     $(function()
     {
@@ -172,7 +184,40 @@ if($_POST['reform']){
         // $modal_window.css = ({"display":"block"});
         $modal_window.fadeOut();
         $modal_cover.fadeOut();
-    }) 
+    })
+
+    // var $slider__prev = $('.slider__prev');
+    // var $slider__next = $('.slider__next');
+    
+    //現在のスライド数（初期は１）
+    var currentItemNum = 1;
+    var $slider__container = $('.slider__container');
+    var slideItemNum = $('.slider__item').length;
+    var slideItemWidth = $('.slider__item').innerWidth();
+    console.log(slidrItemWidth);
+    var slideContainerWidth = slideItemNum * slideItemWidth;
+    console.log(slideContainerWidth);
+    var DURATION = 500;
+
+    $sliderContainer. attr('style', 'width:' + slideContainerWidth + 'px');
+
+    $('.js-slide-prev').on('click', function(){
+        console.log('slide');
+        if(currentItemNum < slideItemNum){
+            $sliderContainer.animate({left: '-=' + slideItemWidth + 'px'}, DURATION);
+            currentItemNum++;
+        }
+    })
+
+    $('.js-slide-next').on('click',function(){
+        console.log('slide');
+        if(currentItemNum > 1){
+            $sliderContainer.animate({left: '+=' + slideItemWidth + 'px'},DURATION);
+        }
+    })
+
+
+
 </script>
 </footer>
 </html>
