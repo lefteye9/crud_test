@@ -70,7 +70,33 @@ if($_POST['reform']){
 // }
 ?>
 
+<nav>
+    <ul>
+        <li>TOP</li>      
+        <li>MENU
+            <ul>MENU-1</ul>
+            <ul>MENU-2</ul>
+            <ul>MENU-3</ul>
+        </li>
+        <li>CONTET
+            <ul>CONTENT-1</ul>
+            <ul>CONTENT-2</ul>
+        </li>
+        <li>ACCESS
+            <ul>ACCESS-1</ul>
+            <ul>ACCESS-2</ul>
+        </li>
+    </ul>
+</nav>
+
 <form action="" method="post">
+<select name="選んでね" id="">
+    <option value="neko">猫</option>
+    <option value="inu">犬</option>
+    <option value="tako">タコ</option>
+</select>
+
+
 <input type="text" class="input_a" name="input_a" id="">
 <input type="text" name="input_b" id="">
 
@@ -138,7 +164,7 @@ if($_POST['reform']){
 
 <footer>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" data-auto-replace-svg="nest"></script>
 <script>
     $(function()
     {
@@ -191,17 +217,23 @@ if($_POST['reform']){
     
     //現在のスライド数（初期は１）
     var currentItemNum = 1;
-    var $slider__container = $('.slider__container');
+    var $sliderContainer = $('.slider__container');
     var slideItemNum = $('.slider__item').length;
     var slideItemWidth = $('.slider__item').innerWidth();
-    console.log(slidrItemWidth);
+    console.log(slideItemWidth);
     var slideContainerWidth = slideItemNum * slideItemWidth;
     console.log(slideContainerWidth);
     var DURATION = 500;
+    $jsSlidePrev = $('.js-slide-prev');
+    console.log($jsSlidePrev);
 
-    $sliderContainer. attr('style', 'width:' + slideContainerWidth + 'px');
+    $sliderContainer.attr('style', 'width:' + slideContainerWidth + 'px');
 
-    $('.js-slide-prev').on('click', function(){
+    $jsSlidePrev.on('click',function(){
+        console.log('prevClick');
+    })
+
+    $('.js-slide-next').on('click', function(){
         console.log('slide');
         if(currentItemNum < slideItemNum){
             $sliderContainer.animate({left: '-=' + slideItemWidth + 'px'}, DURATION);
@@ -209,12 +241,16 @@ if($_POST['reform']){
         }
     })
 
-    $('.js-slide-next').on('click',function(){
+    $('.js-slide-prev').on('click',function(){
         console.log('slide');
         if(currentItemNum > 1){
             $sliderContainer.animate({left: '+=' + slideItemWidth + 'px'},DURATION);
+            currentItemNum--;
+            console.log(slideItemWidth);
         }
-    })
+    });
+
+    console.log('end');
 
 
 

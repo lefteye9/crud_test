@@ -57,7 +57,7 @@ window{
     color: #fff;
     position: absolute;
     font-size: 40px;
-    z-index: 2;
+    z-index: 3;
     cursor: pointer;
     top: 290px;
 }
