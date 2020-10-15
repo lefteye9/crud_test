@@ -69,26 +69,39 @@ if($_POST['reform']){
 //     $input_a ="delete";
 // }
 ?>
-
+<div>
 <nav>
-    <ul>
+    <ul class="menu">
         <li>TOP</li>      
         <li>MENU
-            <ul>MENU-1</ul>
-            <ul>MENU-2</ul>
-            <ul>MENU-3</ul>
+            <ul class="sub">
+                <li><a href="#">MENU-1</a></li>
+                <li><a href="#">MENU-2</a></li>
+            </ul>            
         </li>
-        <li>CONTET
-            <ul>CONTENT-1</ul>
-            <ul>CONTENT-2</ul>
+        <li>CONTENT
+            <ul class="sub">
+                <li><a href="#">CONTENT-1</a></li>
+                <li><a href="#">CONTENT-2</a></li>
+                <li><a href="#">CONTENT-3</a></li>          
+            </ul>         
         </li>
         <li>ACCESS
-            <ul>ACCESS-1</ul>
-            <ul>ACCESS-2</ul>
+            <ul class="sub">
+                <li><a href="#"></a>ACCESS-1</li>
+                <li><a href="#"></a>ACCESS-2</li>
+            </ul>
+       
         </li>
     </ul>
 </nav>
+</div>
 
+<br>
+<br>
+<br>
+
+<div>
 <form action="" method="post">
 <select name="選んでね" id="">
     <option value="neko">猫</option>
@@ -104,6 +117,7 @@ if($_POST['reform']){
 <input type="submit" name="reform" value="更新">
 <input type="submit" name="delete" value="削除">
 </form>
+</div>
 
 <p class="p_text">あああ</p>
 
