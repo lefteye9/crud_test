@@ -34,6 +34,12 @@ add(1111111111111);
 
 $rst = '';
 
+$category_name = getCategory(1);
+
+debug('$category_name:getCategoryの値は:'.print_r($category_name, true));
+debug('$category_name:getCategory[]の値は:'.print_r($category_name['category'], true));
+
+
 // switch ( $_POST['$i'] ):
 //     case create:
 //         $input_a = "create";
@@ -104,6 +110,7 @@ if($_POST['reform']){
 <div>
 <form action="" method="post">
 <select name="選んでね" id="">
+    <option value=""><?php echo $category_name['category']; ?></option>
     <option value="neko">猫</option>
     <option value="inu">犬</option>
     <option value="tako">タコ</option>
@@ -262,6 +269,16 @@ if($_POST['reform']){
             currentItemNum--;
             console.log(slideItemWidth);
         }
+    });
+
+    $("ul.menu li").hover(function(){
+        console.log(this);
+        //:not(:〜〜) 〜〜の状態でない場合
+        //第二引数でセレクタを範囲指定。自分自身（クリックされた親要素）に絞り込む
+        $("ul.sub:not(:animated)", this).slideDown();
+        //第二引数にhoverが外れた時の処理
+    }, function(){
+        $("ul.sub", this).slideUp();
     });
 
     console.log('end');

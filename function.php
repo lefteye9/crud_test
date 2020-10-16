@@ -150,6 +150,34 @@ function readData(){
    }
 }
 
+function getCategory($id){
+  try{
+    $dbh = dbConnect();
+    $sql = 'SELECT category FROM crud_category WHERE id = :id';
+    $data = array(':id' => $id);
+    $stmt = queryPost($dbh, $sql, $data);
+    debug('$stmt(getCategory)の値は：'.print_r($stmt, true));
+
+    if($stmt){
+      debug('あああ');
+       debug('PDO_ASSOCは'.print_r(PDO::FETCH_ASSOC, true));
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+      // return $stmt->fetch(PDO::FETCH_ASSOC);
+      // $rst = $stmt->fetchAll();
+
+      debug('いいい');
+      debug('$rst:getCategoryの値は:'.print_r($rst, true));
+      debug('$rst:getCategory[]の値は:'.print_r($rst['category'], true));
+
+    }else{
+      return false;
+    }
+
+  }catch(Exeption $e){
+    error_log('エラー発生：'.$e->getMessage());
+  }
+};
+
 
 
 

@@ -34,6 +34,11 @@ ul.sub li a{
     color: #fff;
 }
 
+ul.sub li a:hover{
+    background: #ff9900;
+    text-decoration: none;
+}
+
 .modal{
     background: #ccc;
 }
