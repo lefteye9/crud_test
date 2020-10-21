@@ -160,6 +160,12 @@ if($_POST['reform']){
 
 <div class="modal_cover">モーダルカバー</div>
 
+<form action="" method="post">
+    <input type="text" name="js_ajax_check" class="js_ajax_check" value="" id="">
+</form>
+
+
+
 <a href="crud_test_get.php">セッションを理解する為に次のページに行く。</a>
 
 
@@ -282,6 +288,30 @@ if($_POST['reform']){
     });
 
     console.log('end');
+
+    $('.js_ajax_check').on('keyup',function(e){
+        console.log(this);
+        var $this = $(this);
+        console.log('ajax_click');
+
+        //AJAX実行
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            dataType: 'json',
+            data:{
+                ajax_item: $(this).val()
+            }
+            })
+        }).then(
+            function(){
+            console.log(data);
+        },
+        function(){
+            alert('読み込み失敗');
+        }
+        );
+    // })
 
 
 
