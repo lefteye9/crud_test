@@ -124,3 +124,10 @@ ul.sub li a:hover{
     /* opacity: 0.5; */
     display: none;
 }
+
+.test_get_item{
+    display: block;
+    height: 400px;
+    width: 400px;
+    background-color: blue;
+}

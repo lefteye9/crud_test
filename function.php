@@ -150,20 +150,22 @@ function readData(){
    }
 }
 
-function getCategory($id){
+function getCategory(){
   try{
     $dbh = dbConnect();
-    $sql = 'SELECT category FROM crud_category WHERE id = :id';
-    $data = array(':id' => $id);
+    // $sql = 'SELECT category FROM crud_category WHERE id = :id';
+    // $data = array(':id' => $id);
+    $sql = 'SELECT * FROM crud_category';
+    $data = array();
     $stmt = queryPost($dbh, $sql, $data);
     debug('$stmt(getCategory)の値は：'.print_r($stmt, true));
 
     if($stmt){
       debug('あああ');
        debug('PDO_ASSOCは'.print_r(PDO::FETCH_ASSOC, true));
-      return $stmt->fetch(PDO::FETCH_ASSOC);
       // return $stmt->fetch(PDO::FETCH_ASSOC);
-      // $rst = $stmt->fetchAll();
+      // return $stmt->fetch(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll();
 
       debug('いいい');
       debug('$rst:getCategoryの値は:'.print_r($rst, true));
@@ -358,4 +360,19 @@ function tashizan4($hikisuu2){
   return $kekka2;
 }
 
-  ?>
+//GETパラメータ付与
+// $del_key : 付与から取り除きたいGETパラメータのキー
+function appendGetParam($arr_del_key = array()){
+  if(!empty($_GET)){
+    $str = '?';
+    foreach($_GET as $key => $val){
+      if(!in_array($key,$arr_del_key,true)){ //取り除きたいパラメータじゃない場合にurlにくっつけるパラメータを生成
+        $str .= $key.'='.$val.'&';
+      }
+    }
+    $str = mb_substr($str, 0, -1, "UTF-8");
+    return $str;
+  }
+}
+
+?>

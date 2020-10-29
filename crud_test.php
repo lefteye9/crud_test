@@ -34,7 +34,7 @@ add(1111111111111);
 
 $rst = '';
 
-$category_name = getCategory(1);
+$category_name = getCategory();
 
 debug('$category_name:getCategoryの値は:'.print_r($category_name, true));
 debug('$category_name:getCategory[]の値は:'.print_r($category_name['category'], true));
@@ -110,9 +110,13 @@ if($_POST['reform']){
 <div>
 <form action="" method="post">
 <select name="選んでね" id="">
-    <option value=""><?php echo $category_name['category']; ?></option>
-    <option value="neko">猫</option>
-    <option value="inu">犬</option>
+     <?php
+     foreach($category_name as $key => $value){
+     ?>
+    <option value=""><?php echo $value['category']; ?></option>
+     <?php
+     }
+     ?>
     <option value="tako">タコ</option>
 </select>
 
@@ -164,7 +168,9 @@ if($_POST['reform']){
     <input type="text" name="js_ajax_check" class="js_ajax_check" value="" id="">
 </form>
 
-
+<a href="<?php ?>">
+<div class="test_get_item">ゲットカテゴリー遷移テスト</div>
+</a>
 
 <a href="crud_test_get.php">セッションを理解する為に次のページに行く。</a>
 
