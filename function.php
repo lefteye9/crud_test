@@ -362,6 +362,7 @@ function tashizan4($hikisuu2){
 
 //GETパラメータ付与
 // $del_key : 付与から取り除きたいGETパラメータのキー
+
 function appendGetParam($arr_del_key = array()){
   if(!empty($_GET)){
     $str = '?';

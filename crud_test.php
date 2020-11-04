@@ -127,10 +127,22 @@ if($_POST['reform']){
 <input type="submit" name="create" value="作成">
 <input type="submit" name="reform" value="更新">
 <input type="submit" name="delete" value="削除">
+
 </form>
 </div>
 
-<p class="p_text">あああ</p>
+<div>
+    <form action="" method="get">
+        ゲットフォーム
+        <input type="text" class="get_input_a" name="get_input_a">
+        <input type="text" class="get_input_b" name="get_input_b">
+        <input type="submit" value="送信">
+    </form>
+</div>
+
+<p class="p_text"><?php echo $_GET['get_input_a']; ?></p>
+<p class="p_text"><?php echo $_GET['get_input_b']; ?></p>
+
 
 <button class="modal">モーダル</button>
 
@@ -174,6 +186,19 @@ if($_POST['reform']){
 
 <a href="crud_test_get.php">セッションを理解する為に次のページに行く。</a>
 
+<a href="crud_test.php <?php echo (!empty(appendGetParam())) ? appendGetParam().'&p_id=2' : '?p_id=3' ?>" class="panel">ゲットを理解するためのページ</a>
+
+<br>
+
+<a href="crud_test.php <?php echo appendGetParam().'&p_id=2' ?>" class="panel">ゲットを理解するためのページ3</a>
+
+<br>
+<!-- <?php foreach($GET as $key => $val){ ?>
+<a href="crud_test.php? <?php echo $key. '='  .$val ?>">ゲットを理解するためのページ2</a>
+<?php } ?> -->
+<a href="crud_test.php? <?php echo $key. '='  .$val ?>">ゲットを理解するためのページ2</a>
+
+
 
 <?php echo $input_a; ?>
 <?php echo $input_b; ?>
@@ -189,6 +214,11 @@ if($_POST['reform']){
 <?php echo $_GET['test']; ?>
 
 <?php echo $_GET['item']; ?>
+
+<?php echo $_GET['input_a']; ?>
+<?php echo $_GET['input_b']; ?>
+
+
 
 
 
